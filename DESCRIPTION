@@ -1,11 +1,14 @@
 Package: table508
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Export 508-Compliant HTML
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: Zachary T Cross
+Maintainer: Zachary T Cross <zachary.t.cross@gmail.com>
+Description: Export (simple) data frames as 508-compliant HTML tables
+    This primarily involves ensuring that each column- and row-header has a unique `id` attribute and that every cell in
+    the table uses the `headers` attribute to list all relevant headers.
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+Imports: 
+    xml2
