@@ -7,36 +7,36 @@
 #' html_text <- create_508_table(df)
 #'
 #' @export
-create_508_table <- function(.data, table_id='table'){
+create_508_table <- function(.data, table_id = "table"){
   # Create the root xml node
-  r <- xml2::xml_new_root('root')
+  r <- xml2::xml_new_root("root")
 
   # Create the table node
-  table <- xml2::xml_add_child(r, 'table', id=table_id, class='regular', summary='Long-form summary')
+  table <- xml2::xml_add_child(r, "table", id = table_id)
 
   # Create the table header
-  header <- xml2::xml_add_child(table, 'thead')
-  header_row <- xml2::xml_add_child(header, 'tr')
+  header <- xml2::xml_add_child(table, "thead")
+  header_row <- xml2::xml_add_child(header, "tr")
 
   for (i in seq_along(colnames(.data))){
-    element_id <- sprintf('columnHead%i', i)
-    xml2::xml_add_child(header_row, 'th', colnames(.data)[i], id=element_id)
+    element_id <- sprintf("columnHead%i", i)
+    xml2::xml_add_child(header_row, "th", colnames(.data)[i], id = element_id)
   }
 
   # Create each data row
-  body <- xml2::xml_add_child(table, 'tbody')
+  body <- xml2::xml_add_child(table, "tbody")
 
   for (i in seq_len(nrow(.data))){
-    xml_row <- xml2::xml_add_child(body, 'tr')
+    xml_row <- xml2::xml_add_child(body, "tr")
 
     row <- .data[i, ]
     for (j in seq_len(ncol(row))) {
-      headers <- sprintf('columnHead%i', j)
-      td <- xml2::xml_add_child(xml_row, 'td', as.character(row[j]), headers=headers)
+      headers <- sprintf("columnHead%i", j)
+      cell_value <- as.character(row[j])
+      xml2::xml_add_child(xml_row, "td", cell_value, headers = headers)
     }
   }
 
-  # Display resulting XML
-  writeLines(paste(table))
-
+  # Return final XML node
+  return(table)
 }
