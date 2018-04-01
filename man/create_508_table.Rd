@@ -4,7 +4,8 @@
 \alias{create_508_table}
 \title{Create a 508-compliant HTML table from tabular data}
 \usage{
-create_508_table(.data, table_id = "table", rownames.as.headers = FALSE)
+create_508_table(.data, table_id = "table", rownames_as_headers = FALSE,
+  top_left_cell = NULL, summary_attr = NULL, caption = NULL)
 }
 \arguments{
 \item{.data}{A data frame}
@@ -12,8 +13,15 @@ create_508_table(.data, table_id = "table", rownames.as.headers = FALSE)
 \item{table_id}{A string representing the \code{id} attribute of the
 resulting \code{<table>} node}
 
-\item{rownames.as.headers}{A boolean toggling whether to include row headers
+\item{rownames_as_headers}{A boolean toggling whether to include row headers
 based on the \code{rownames(.data)}}
+
+\item{top_left_cell}{A string indicating value of top-left cell; used when
+rownames_as_headers if TRUE}
+
+\item{summary_attr}{A string used as the table's summary-attribute}
+
+\item{caption}{A string used to create a \code{<caption>} tag}
 }
 \value{
 xml2 node containing \code{<table>}
