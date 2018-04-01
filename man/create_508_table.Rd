@@ -4,13 +4,21 @@
 \alias{create_508_table}
 \title{Create a 508-compliant HTML table from tabular data}
 \usage{
-create_508_table(.data)
+create_508_table(.data, table_id = "table", rownames.as.headers = FALSE)
+}
+\arguments{
+\item{.data}{A data frame}
+
+\item{table_id}{A string representing the \code{id} attribute of the
+resulting \code{<table>} node}
+
+\item{rownames.as.headers}{A boolean toggling whether to include row headers
+based on the \code{rownames(.data)}}
+}
+\value{
+xml2 node containing \code{<table>}
 }
 \description{
-\code{create_508_table} returns an HTML string representing a 508-compliant version of the tabular data \code{.data}.
-}
-\examples{
-df <- tibble('location'=c('Denver', 'DC', 'Miami'), 'meal'= c('dinner', 'lunch', 'lunch'))
-html_text <- create_508_table(df)
-
+\code{create_508_table} returns an HTML string representing a 508-compliant
+version of the tabular data \code{.data}.
 }
