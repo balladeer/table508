@@ -5,8 +5,8 @@ Version: 0.1.0
 Author: Zachary T Cross
 Maintainer: Zachary T Cross <zachary.t.cross@gmail.com>
 Description: Export (simple) data frames as 508-compliant HTML tables
-    This primarily involves ensuring that each column- and row-header has a unique `id` attribute and that every cell in
-    the table uses the `headers` attribute to list all relevant headers.
+    This primarily involves ensuring that each header includes an appropriate
+    scope attribute: 'col' for column headers, 'row' for row headers.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
